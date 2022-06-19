@@ -1,3 +1,5 @@
 package com.mac.flights.model
 
-data class CountryTo()
+data class CountryTo(
+    val name: String
+)

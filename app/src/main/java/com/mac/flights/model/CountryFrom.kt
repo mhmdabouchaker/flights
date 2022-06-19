@@ -1,4 +1,5 @@
 package com.mac.flights.model
 
-class CountryFrom {
-}
+data class CountryFrom(
+    val name: String
+)

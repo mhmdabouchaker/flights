@@ -1,4 +1,4 @@
-package com.mac.flights.utils
+package com.mac.flights.extensions
 
 import android.app.Activity
 import android.app.ActivityManager
