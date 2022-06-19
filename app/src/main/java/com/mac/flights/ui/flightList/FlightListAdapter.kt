@@ -15,7 +15,8 @@ import com.mac.flights.databinding.ListItemFlightsBinding
 import com.mac.flights.model.FlightsData
 import java.util.*
 
-class FlightListAdapter : ListAdapter<FlightsData, FlightListAdapter.FlightsViewHolder>(FlightListComparator){
+class FlightListAdapter(private var onFlightClickListener: ((FlightsData, String) -> Unit)? = null) :
+    ListAdapter<FlightsData, FlightListAdapter.FlightsViewHolder>(FlightListComparator){
 
     private var currency: String = "EUR"
 
@@ -23,18 +24,21 @@ class FlightListAdapter : ListAdapter<FlightsData, FlightListAdapter.FlightsView
         this.currency = currency
     }
 
+    fun setOnFlightClickListener(listener: (FlightsData, String) -> Unit) {
+        onFlightClickListener = listener
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightsViewHolder {
         return FlightsViewHolder(parent.context,
             ListItemFlightsBinding.inflate(LayoutInflater.from(parent.context),parent,false),
-            currency)
+            currency, onFlightClickListener)
     }
 
     override fun onBindViewHolder(holder: FlightsViewHolder, position: Int) {
         holder.bindViews(getItem(position))
     }
 
-    class FlightsViewHolder(private val context: Context,private val itemBinding:ListItemFlightsBinding,
-                            private val currency: String) :
+    class FlightsViewHolder(private val context: Context, private val itemBinding:ListItemFlightsBinding,
+                            private val currency: String, private var listener:((FlightsData, String) -> Unit)? = null ) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bindViews(flight: FlightsData) = with(itemBinding) {
@@ -42,16 +46,11 @@ class FlightListAdapter : ListAdapter<FlightsData, FlightListAdapter.FlightsView
                 .apply(RequestOptions().centerInside()).into(ivDestination)
             tvCountryName.text = flight.countryTo.name
             tvCityName.text = flight.cityTo
-
-//            tvFlightDuration.text = String.format(Locale.getDefault(),"%s:%s", context.getString(R.string.fly_duration), flight.fly_duration)
             tvFlightPrice.text = String.format(Locale.getDefault(),"%s%s", currency, flight.price)
-//            if (flight.availability.seats != null){
-//                tvSeats.text = String.format("%s %s", flight.availability.seats, context.getString(R.string.seats_left))
-//                flSeats.visibility = View.VISIBLE
-//            }else{
-//                flSeats.visibility = View.GONE
-//            }
 
+            itemView.setOnClickListener{
+                listener?.invoke(flight, currency)
+            }
         }
     }
 

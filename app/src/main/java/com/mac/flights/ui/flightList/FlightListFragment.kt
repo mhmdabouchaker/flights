@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.mac.flights.R
@@ -40,12 +41,20 @@ class FlightListFragment: Fragment() {
         observeFlights()
     }
 
-
     private fun setupAdapter() = with(binding){
         flightsAdapter = FlightListAdapter()
         flightListView.layoutManager = LinearLayoutManager(activity)
         flightListView.setHasFixedSize(true)
         flightListView.adapter = flightsAdapter
+
+       flightsAdapter.setOnFlightClickListener { flightsData, currency ->
+           val navAction =
+              FlightListFragmentDirections.actionFlightListFragmentToFlightDetailsFragment(
+                  currency, flightsData
+              )
+
+           findNavController().navigate(navAction)
+       }
     }
 
     private fun observeFlights(){

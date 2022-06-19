@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
     //annotation processing Hilt
     id 'kotlin-kapt'
 }

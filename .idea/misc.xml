@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_airline_seat_recline_normal_24.xml" value="0.2425" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.15989583333333332" />
+        <entry key="app/src/main/res/layout/fragment_flight_details.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_flight_listing.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/list_item_flights.xml" value="0.2776268115942029" />
       </map>

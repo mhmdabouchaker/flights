@@ -2,6 +2,8 @@
     <string name="app_name">Flights</string>
     <string name="action_dismiss">DISMISS</string>
     <string name="error_unknown">Unknown Error</string>
-    <string name="fly_duration">Fly Duration</string>
-    <string name="seats_left">seat(s) left</string>
+    <string name="flight_date">Flight Date</string>
+    <string name="flight_duration">Flight Duration</string>
+    <string name="seats_left">Seat(s) Left</string>
+    <string name="price">Price</string>
 </resources>

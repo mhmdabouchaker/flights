@@ -8,6 +8,21 @@
     <fragment android:id="@+id/flightListFragment"
         android:name="com.mac.flights.ui.flightList.FlightListFragment"
         tools:layout="@layout/fragment_flight_listing">
+        <action
+            android:id="@+id/action_flightListFragment_to_flightDetailsFragment"
+            app:destination="@id/flightDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flightDetailsFragment"
+        android:name="com.mac.flights.ui.flightDetails.FlightDetailsFragment"
+        tools:layout="@layout/fragment_flight_details">
+
+        <argument android:name="currency"
+            app:argType="string"/>
+        <argument
+            android:name="flight"
+            app:argType="com.mac.flights.model.FlightsData" />
 
     </fragment>
 </navigation>
