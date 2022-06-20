@@ -1,9 +1,9 @@
 package com.mac.flights.data.remote
 
-import android.util.Log
 import com.mac.flights.model.FlightsResponse
 import com.mac.flights.model.Result
 import com.mac.flights.network.services.FlightsService
+import com.mac.flights.utils.Carbon
 import com.mac.flights.utils.ErrorUtils
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -18,7 +18,8 @@ class FlightsRemoteDataSource @Inject constructor(private val retrofit: Retrofit
         val flightsService = retrofit.create(FlightsService::class.java)
         return getResponse(
             request = {flightsService.getFlights("popularity", 0, "en",
-                "49.2-16.61-500km", "anywhere", "aggregateResults",
+                "49.2-16.61-500km", "anywhere", Carbon.getCurrentDate(),
+                1,"aggregateResults",
                 "oneway", 3, 5, "skypicker-android")},
             defaultErrorMessage = "Something Went Wrong"
         )

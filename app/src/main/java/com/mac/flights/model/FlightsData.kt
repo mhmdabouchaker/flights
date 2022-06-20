@@ -10,7 +10,7 @@ data class FlightsData(
     val cityTo: String,
     val countryFrom: CountryFrom,
     val countryTo: CountryTo,
-    val dTime: Int,
+    val dTime: Long,
     val mapIdto: String,
     val fly_duration: String,
     val price: Double,

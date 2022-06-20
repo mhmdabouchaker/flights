@@ -17,6 +17,8 @@ interface FlightsService {
                            @Query("locale") locale:String,
                            @Query("flyFrom") flyFrom: String,
                            @Query("to") flyTo: String,
+                           @Query("date_from") dateFrom: String,
+                           @Query("one_for_city") onForCity: Int,
                            @Query("featureName") featureName: String,
                            @Query("typeFlight") type: String,
                            @Query("v") version: Int,
