@@ -12,7 +12,7 @@ fun Activity.applyTaskDescription() {
     val description = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
         val color = ContextCompat.getColor(this, R.color.black)
 
-        ActivityManager.TaskDescription(appName, R.mipmap.ic_launcher_round, color)
+        ActivityManager.TaskDescription(appName, R.mipmap.ic_app_launcher, color)
     } else {
         ActivityManager.TaskDescription(appName)
     }
